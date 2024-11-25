@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormGroup } from '@angular/forms';
+import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
+
 import { CustomValidators } from '../app/custom-forms.module';
 
 @Component({
@@ -10,21 +11,23 @@ import { CustomValidators } from '../app/custom-forms.module';
 export class DevComponent implements OnInit {
   public form: FormGroup;
   public num = 5;
-  public arrayLengthTest = ['ok'];
+  public arrayLengthTest: string[] = ['ok'];
   public dateTest = { year: 2017, month: 10, day: 12 };
   public objProperty = { id: 1 };
 
-  ngOnInit() {
-    const password = new FormControl('', Validators.required);
-    const certainPassword = new FormControl('', CustomValidators.notEqualTo(password));
+  constructor(private fb: FormBuilder) {}
 
-    this.form = new FormGroup({
-      password,
-      certainPassword
+  ngOnInit(): void {
+    const password: FormControl = new FormControl('', Validators.required);
+    const certainPassword: FormControl = new FormControl('', CustomValidators.notEqualTo(password));
+
+    this.form = this.fb.group({
+        password: password,
+        certainPassword: certainPassword
     });
   }
 
-  onSubmit(form) {
-    console.log(form);
+  onSubmit(): void {
+    console.log(this.form.value);
   }
 }

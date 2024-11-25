@@ -14,7 +14,7 @@ const EMAIL_VALIDATOR: any = {
   providers: [EMAIL_VALIDATOR]
 })
 export class EmailValidator implements Validator {
-  validate(c: AbstractControl): {[key: string]: any} {
+  validate(c: AbstractControl): Record<string, any> {
     return email(c);
   }
 }

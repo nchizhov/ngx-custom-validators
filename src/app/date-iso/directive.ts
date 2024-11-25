@@ -14,7 +14,7 @@ const DATE_ISO_VALIDATOR: any = {
   providers: [DATE_ISO_VALIDATOR]
 })
 export class DateISOValidator implements Validator {
-  validate(c: AbstractControl): {[key: string]: any} {
+  validate(c: AbstractControl): Record<string, any> {
     return dateISO(c);
   }
 }

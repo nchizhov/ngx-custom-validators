@@ -14,16 +14,16 @@ const RANGE_LENGTH_VALIDATOR: any = {
   providers: [RANGE_LENGTH_VALIDATOR]
 })
 export class RangeLengthValidator implements Validator, OnInit, OnChanges {
-  @Input() rangeLength: [number];
+  @Input() rangeLength: [number, number];
 
   private validator: ValidatorFn;
   private onChange: () => void;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.validator = rangeLength(this.rangeLength);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     for (const key in changes) {
       if (key === 'rangeLength') {
         this.validator = rangeLength(changes[key].currentValue);
@@ -34,7 +34,7 @@ export class RangeLengthValidator implements Validator, OnInit, OnChanges {
     }
   }
 
-  validate(c: AbstractControl): {[key: string]: any} {
+  validate(c: AbstractControl): Record<string, any> {
     return this.validator(c);
   }
 

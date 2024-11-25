@@ -19,11 +19,11 @@ export class LessThanEqualValidator implements Validator, OnInit, OnChanges {
   private validator: ValidatorFn;
   private onChange: () => void;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.validator = lte(this.lte);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     for (const key in changes) {
       if (key === 'lte') {
         this.validator = lte(changes[key].currentValue);
@@ -34,7 +34,7 @@ export class LessThanEqualValidator implements Validator, OnInit, OnChanges {
     }
   }
 
-  validate(c: AbstractControl): {[key: string]: any} {
+  validate(c: AbstractControl): Record<string, any> {
     return this.validator(c);
   }
 

@@ -6,7 +6,7 @@ Directives for form validation (template or model driven).
 # Installation
 
 ```bash
-npm i ngx-custom-validators --save
+npm i @inok/ngx-custom-validators --save
 ```
 
 # Validators

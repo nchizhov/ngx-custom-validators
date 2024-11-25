@@ -19,11 +19,11 @@ export class GreaterThanEqualValidator implements Validator, OnInit, OnChanges {
   private validator: ValidatorFn;
   private onChange: () => void;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.validator = gte(this.gte);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     for (const key in changes) {
       if (key === 'gte') {
         this.validator = gte(changes[key].currentValue);
@@ -34,7 +34,7 @@ export class GreaterThanEqualValidator implements Validator, OnInit, OnChanges {
     }
   }
 
-  validate(c: AbstractControl): {[key: string]: any} {
+  validate(c: AbstractControl): Record<string, any> {
     return this.validator(c);
   }
 
