@@ -113,7 +113,6 @@
       }
     }
   },
-  "defaultProject": "ngx-custom-validators",
   "cli": {
     "analytics": false
   }

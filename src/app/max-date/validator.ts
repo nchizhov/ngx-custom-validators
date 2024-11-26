@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, NgModel, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, NgModel, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { isDate, isPresent, parseDate } from '../util/lang';
 
@@ -6,7 +6,7 @@ export const maxDate = (maxInput: any): ValidatorFn => {
   let value;
   let subscribe = false;
   let maxValue = maxInput;
-  const isForm = maxInput instanceof FormControl || maxInput instanceof NgModel;
+  const isForm = maxInput instanceof UntypedFormControl || maxInput instanceof NgModel;
   return (control: AbstractControl): ValidationErrors => {
     if (!subscribe && isForm) {
       subscribe = true;
