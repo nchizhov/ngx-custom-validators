@@ -1,5 +1,15 @@
 {
     "lib": {
         "entryFile": "public_api.ts"
-    }
+    },
+    "allowedNonPeerDependencies": [
+        "@angular/common",
+        "@angular/compiler",
+        "@angular/core",
+        "@angular/forms",
+        "@angular/platform-browser",
+        "moment",
+        "rxjs",
+        "zone.js"
+    ]
 }
